@@ -1,0 +1,67 @@
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Servicios" routerLink='/servicios' style="cursor:pointer;">Servicios</a><span>&raquo;</span></li>
+           
+            <li><strong>Trabaja con nosotros</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+
+  <!-- Main Container -->
+  <section class="main-container col1-layout">
+    <div class="main container">
+      <div class="row">
+        <section class="col-main col-sm-12">
+          
+          <div id="contact" class="page-content page-contact">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6" id="contact_form_map">
+                <h3 class="page-subheading">Trabaja con nosotros</h3>
+                <p>Si estas interesado en trabajar con nosotros , haznos llegar tu información y nos comunicaremos contigo a la brevedad.</p>
+                <br/>
+                <img  src="assets/images/trabaja2.jpeg" style="height:320px;width:auto;"/>
+
+              </div>
+              <div class="col-sm-6">
+                <h3 class="page-subheading">Formulario</h3>
+                <form >
+                    <div class="contact-form-box">
+                      <div class="form-selector">
+                        <label>Nombres y Apellidos</label>
+                        <input type="text" class="form-control input-sm"  />
+                      </div>
+                      <div class="form-selector">
+                        <label>Correo</label>
+                        <input type="text" class="form-control input-sm" />
+    
+                      </div>
+                      <div class="form-selector">
+                        <label>Teléfono/Celular</label>
+                        <input type="text" class="form-control input-sm" (keypress)="keyPress($event)" maxlength="15" />
+                      </div>
+                      <div class="form-selector">
+                        <label for="exampleFormControlFile1">Ingrese su CV</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=".doc,.docx,.pdf" >
+                      </div>
+                      <div class="form-selector">
+                        <label>Mensaje</label>
+                        <textarea class="form-control input-sm" rows="10" ></textarea>
+                      </div>
+                      <div class="form-selector">
+                        <button class="button" type="submit"><i class="fa fa-send"></i>&nbsp; <span>Enviar</span></button>
+                        &nbsp; </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>

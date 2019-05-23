@@ -1,0 +1,129 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul>
+          <li class="home"> <a title="Ir a la página principal" routerLink='/inicio'>Inicio</a><span>&raquo;</span></li>
+          <li><strong>Medicina Natural</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumbs End --> 
+<!-- Main Container -->
+<div class="main-container col2-left-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-main col-sm-9 col-xs-12 col-sm-push-3">
+        <div class="shop-inner">
+          <div class="page-title">
+            <h2>Medicina Natural</h2>
+          </div>
+          <div class="toolbar">
+            <div class="view-mode">
+              <ul>
+                <li class="active"> <a > <i class="fa fa-th"></i> </a> </li>
+              </ul>
+            </div>
+           
+     <div class="sorter">
+        <div class="short-by">
+            <label>Ordenar por:</label>
+            <select  [(ngModel)]="orden" >
+              <option [ngValue]="Seleccione" disabled>Seleccione</option>
+              <option value="nombre">Nombre</option>
+            </select>
+          </div>
+          <div class="short-by page">
+            <label>Mostrar:</label>
+            <select  [(ngModel)]="mostrar" >
+              <option [ngValue]="Seleccione" disabled>Ver</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+            </select>
+          </div>
+            </div>
+          </div>
+
+        
+          <div class="product-grid-area">
+            <ul class="products-grid">
+                <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 " *ngFor="let item of listaproductos | filterPrice:priceMinFilter:priceMaxFilter | sort:orden | show:mostrar | paginate: {
+                itemsPerPage: 9,
+                currentPage: p}">
+
+                <div class="product-item">
+                  <div class="item-inner">
+                    <div class="product-thumb has-hover-img">
+                      <div class="icon-sale-label sale-left">Oferta!</div>
+                      <figure style="text-align:center;"> 
+                      <a [routerLink]="['/detalle',item.idproducto]"><img src="{{item.ruta}}" alt="" style="height:290px;width:auto;">
+                        </a>
+                      </figure>
+                    </div>
+                    <div class="item-info">
+                      <div class="info-inner">
+                        <div class="item-title"> <h4><a [routerLink]="['/detalle',item.idproducto]">{{item.nombre}}</a></h4> </div>
+                        <div class="item-content">
+                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                          <div class="item-price">
+                              <div class="price-box">
+                                  <p class="special-price"> 
+                                    <span class="price-label">Special Price</span> <span class="price"> {{item.Simbolo}} {{item.precio}} </span> </p>
+                                  <p class="old-price" *ngIf="loginservice.isLoggedin" > <span class="price-label">Regular Price:</span> <span class="price"> {{item.SimboloWC}} {{item.precioWC}} </span> </p>
+                                </div>
+                          </div>
+                          <div class="pro-action">
+                            <button type="button" class="add-to-cart-mt" > <i class="fa fa-shopping-cart"></i><span style="font-size:1em;">Agregar</span> </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+          
+            </ul>
+          </div>
+        <!-- <div style="text-align:center;margin-bottom:20px;"> -->
+          <div class="ngx-pagination">
+          <pagination-controls  (pageChange)="p =$event" ></pagination-controls>
+          </div> 
+       
+      
+
+    
+        </div>
+      </div>
+      <aside class="sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+          <div class="block shop-by-side">
+            <div class="sidebar-bar-title">
+              <h3>Filtros</h3>
+            </div>
+          </div>
+          <div class="block product-price-range">
+              <h2 class="saider-bar-title">Filtro de Precios en Dolares</h2>
+            <div class="block-content">
+  
+            </div>
+            <div class="slider-range" >
+              <div class="rangeslider">
+                  <input class="min" name="range_1" type="range" min="1" max="1000" value="10" [(ngModel)]="priceMinFilter" />
+                  <input class="max" name="range_1" type="range" min="1" max="1000" value="90" [(ngModel)]="priceMaxFilter" />
+                  <span class="range_min light left">Min: $ 1</span>
+                  <span class="range_max light right">Max: $ 1000</span>
+              </div>
+           
+          </div>
+           
+          </div>
+  
+        </aside>
+    </div>
+  </div>
+</div>
+<!-- Main Container End --> 
+<!-- service section -->

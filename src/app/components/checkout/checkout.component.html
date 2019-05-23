@@ -1,0 +1,73 @@
+<section class="main-container col2-right-layout">
+    <div class="main container">
+      <div class="row">
+        <div class="col-main col-sm-9 col-xs-12">
+          <div class="page-content checkout-page"><div class="page-title">
+            <h2>Checkout</h2>
+          </div>
+              <div class="table-responsive">
+                  <table class="table table-bordered cart_summary">
+                      <thead>
+                          <tr>
+                              <th class="cart_product">Imagen</th>
+                              <th>Descripcion</th>
+                              <th>Precio Unidad</th>
+                              <th>Cantidad</th>
+                              <th>SubTotal</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let item of listaCheckout">
+                              <td class="cart_product">
+                                  <a href="#"><img src="{{item.ruta}}" alt="Product"></a>
+                              </td>
+                              <td class="cart_description">
+                                  <p class="product-name"><a href="#">{{item.nombre}}</a></p>
+                              </td>
+                              
+                              <td class="price"><span>{{item.Simbolo}} {{item.precio}}</span></td>
+                              <td class="qty">
+                                <!-- <input class="form-control input-sm" type="text" value="1"> -->
+                                {{item.cantidad}}
+                             </td>
+                              <td class="price">
+                                  <span> {{item.Simbolo}} {{item.precio * item.cantidad}}</span>
+                              </td>
+                          </tr>
+                      </tbody>
+                      <tfoot>
+
+                          <tr>
+                              <td colspan="4"><strong>Total</strong></td>
+                              <td colspan="2" style="text-align:center;" [hidden]="listaCheckout < 1"><strong> {{total}} </strong></td>
+                          </tr>
+                      </tfoot>    
+                  </table>
+                </div>
+                  <button class="button pull-right" style="color:#fff;" (click)="registrarCompra()"><i class="fa fa-shopping-basket"></i>&nbsp;&nbsp;<span>Confirmar Compra</span></button>
+              </div>
+          </div>
+        <aside class="right sidebar col-sm-3 col-xs-12">
+          <div class="sidebar-checkout block">
+           <div class="sidebar-bar-title">
+                <h3>Tu Checkout</h3>
+              </div>
+            <div class="block-content">
+              <dl>
+                  <h4 class="checkout-sep">Información del cliente</h4>
+                <dd class="complete">
+                  <address>
+                  <b>Cliente:</b> {{nombres}} {{apellido_paterno}} {{apellido_materno}} <br>
+                  <b>DNI:</b> {{dni}}<br>
+                  <b>Celular:</b> {{celular}}<br>
+                  <b>Correo:</b> {{correo}} <br>
+                  <b>Dirección:</b>{{departamento}}/{{provincia}}/{{distrito}}/{{direccion}} <br>
+                  </address>
+                </dd>
+              </dl>
+            </div>
+          </div>
+          </aside>
+      </div>
+    </div>
+    </section>

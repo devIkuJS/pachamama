@@ -1,0 +1,17 @@
+
+    .ngx-pagination li {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      margin-right: 15px !important;
+      border-radius: 0; }
+    .ngx-pagination .current {
+      padding: 0.1875rem 0.625rem;
+      background:#23603c !important;
+      border: 1px solid #23603c;
+      color: #fff;
+      transition: all .4s ease-out .2s;
+    
+    }
+
+ 

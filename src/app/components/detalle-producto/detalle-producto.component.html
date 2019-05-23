@@ -1,0 +1,119 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul>
+          <li class="home"> <a title="Go to Home Page" >Inicio</a><span>&raquo;</span></li>
+          <li class=""> <a title="Go to Home Page" >Lista de productos</a><span>&raquo;</span></li>
+          <li><strong>{{detalleproducto.nombre}}</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumbs End --> 
+<!-- Main Container -->
+<div>
+<div class="main-container col1-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-main">
+        <div class="product-view-area">
+          <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+            <div class="icon-sale-label sale-left">Sale</div>
+            <div class="large-image"> <a  class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="{{detalleproducto.ruta}}" alt="products" style="height:488px;width:auto;"> </a> </div> 
+          </div>
+          <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
+        
+            <div class="product-name">
+              <h1>{{detalleproducto.nombre}}</h1>
+            </div>
+            <div class="price-box">
+                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price">{{detalleproducto.Simbolo}} {{detalleproducto.precio}} </span> </p>
+              </div>
+            <div class="ratings">
+              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+           <p class="rating-links"> <a>Calidad de producto</a></p>
+              <p class="availability in-stock pull-right">Estado: <span>En Stock</span></p>
+            </div>
+            <div class="short-description">
+              <h4>Descripci&oacute;n</h4>
+
+              <p>{{detalleproducto.descripcion}}</p>
+            </div>
+            <div class="product-color-size-area">
+                <div class="color-area">
+                    <h2 class="saider-bar-title">Marca</h2>
+                    <div class="color">
+                      <ul>
+                        <li>{{detalleproducto.marca}}</li>
+                      </ul>
+                    </div>
+                  </div>
+              <div class="size-area">
+                  <h2 class="saider-bar-title">{{detalleproducto.atributo}}</h2>
+                  <div class="size">
+                    <ul>
+                      <li></li>
+                      <li>{{detalleproducto.valor}}</li>
+                      <li>{{detalleproducto.cantidad_valor}}</li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div class="product-variation">
+              <form action="#" method="post">
+                  <div class="cart-plus-minus" style="float:left;">
+                      <label for="qty">Cantidad: 1</label>
+                    </div>
+                    
+                 <div style="float:right;">
+                <button class="button pro-add-to-cart" title="Agregar al carrito" type="button" (click)="addToCart(detalleproducto)"><span><i class="fa fa-shopping-cart"></i> Agregar al carrito</span></button>
+              </div>
+              
+              </form>
+            </div>
+            <div><ul>
+            <li><a>*Para agregar más producto de este tipo , lo puede hacer en el carrito de compras.</a> </li>
+            </ul>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="product-overview-tab">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="product-tab-inner">
+                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                  <li class="active"> <a href="#description" data-toggle="tab">Descripci&oacute;n</a> </li>
+                  <li><a href="#product_tags" data-toggle="tab">Especificaciones</a></li>
+                </ul>
+                <div id="productTabContent" class="tab-content">
+                  <div class="tab-pane fade in active" id="description">
+                    <div class="std">
+                      <p>{{detalleproducto.descripcion}}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="tab-pane fade" id="product_tags">
+                    <div class="box-collateral box-tags">
+                      <div class="tags">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Main Container End --> 
+
+

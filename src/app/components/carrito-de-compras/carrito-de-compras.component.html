@@ -1,0 +1,100 @@
+<section class="main-container col1-layout">
+  <div class="main container">
+    <div class="col-main">
+      <div class="cart">
+        
+        <div class="page-content page-order"><div class="page-title">
+          <h2>Carrito de compras</h2>
+        </div>
+          
+          <div class="order-detail-content">
+            <div class="table-responsive">
+              <table class="table table-bordered cart_summary">
+                <thead>
+                  <tr>
+                    <th class="cart_product">Imagen</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad.</th>
+                    <th>Precio Unidad</th>
+                    <th>SubTotal</th>
+                    <th  class="action"><i class="fa fa-trash-o"></i></th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                  <!--  <tr *ngFor="let item of shoppingCartItems">
+                      </tr> -->
+                      <tr [hidden]="totalPrice(null) > 0">
+                          <td colspan="5" style="text-align:center;">No hay productos agregados al carrito todavía</td>
+                        </tr>
+                      
+                      
+                <!-- <tr *ngFor="let item of shoppingCartItems" [hidden]="totalPrice(null)< 1"> -->
+                    <tr *ngFor="let item of shoppingCartItems" [hidden]="totalPrice(null) < 1"> 
+                    <td class="cart_product"><a><img src="{{item.ruta}}" alt="Product"></a></td>
+                  <td class="cart_description"><p class="product-name"><a>{{item.nombre}} </a></p></td>
+                    <!--  <small><a>Cantidad : 80z</a></small><br> -->
+                    <td class="availability in-stock">
+                        <div class="cart-plus-minus" >
+                           <div class="numbers-row">
+                           <button class="btn btn-success btn-xs plus" (click)="add(item.idproducto)"><i class="glyphicon glyphicon-plus"></i></button>
+                            {{item.cantidad}}
+                            <button class="btn btn-danger btn-xs minus" (click)="del(item.idproducto)" [disabled]="item.cantidad < 2"><i class="glyphicon glyphicon-minus"></i></button>
+
+                          </div>
+                          </div>
+                    </td>
+                    <td class="price"><span>{{item.Simbolo}} {{item.precio}}</span></td>
+                    <td class="price"><span> {{item.Simbolo}} {{item.precio * item.cantidad}}</span></td>
+                    <td class="action"><a (click)="removeItem(item)" style="cursor:pointer !important;"><i class="icon-close"></i></a></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                   
+                    <td colspan="4">Total</td>
+                    <td colspan="4" style="padding-left:22px;"> {{totalPrice(null)}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">Descuentos</td>
+                    <td colspan="4" style="padding-left:22px;">0.00</td>
+                  </tr>
+                    <tr>
+                        <td colspan="4"><strong>Total Neto</strong></td>
+                        <td colspan="4" style="padding-left:22px;"><strong> {{totalPrice(null)}}</strong></td>
+                      </tr>
+                </tfoot>
+              </table>
+            </div>
+         <!--   <button class="button button-checkout" title="descuento" type="button" data-toggle="modal" data-target="#modaldescuento" >Tiene un cup&oacute;n de descuento?</button> -->
+            <div class="cart_navigation"> <a class="continue-btn" routerLink='/lista-de-productos'><i class="fa fa-arrow-left"> </i>&nbsp; Continuar comprando</a> 
+              <!--<a class="checkout-btn" ><i class="fa fa-check"></i> Proceder a Checkout</a>  -->
+             <!-- <button class="checkout-btn"  [disabled]="totalPrice(null)< 1"  routerLink='/checkout'><i class="fa fa-check" ></i>&nbsp;Proceder a Checkout</button> -->
+             <button class="checkout-btn"  (click)="procesarcheckout()" type="button" [disabled]="totalPrice(null)< 1">Procesar a Checkout</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modaldescuento">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Por favor ingrese su cup&oacute;n de descuento</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="text" class="form-control" id="cupon">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Aplicar descuento</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

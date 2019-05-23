@@ -1,0 +1,82 @@
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page">Inicio</a><span>&raquo;</span></li>
+           
+            <li><strong>Contacto</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+
+  <!-- Main Container -->
+  <section class="main-container col1-layout">
+    <div class="main container">
+      <div class="row">
+        <section class="col-main col-sm-12">
+          
+          <div id="contact" class="page-content page-contact">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6" id="contact_form_map">
+                <h3 class="page-subheading">Contacto</h3>
+                <p>Si tienes alguna consulta, sugerencia o reclamo, podrás contactarte con nosotros a través de nuestra línea de atención al cliente.</p>
+                <br/>
+                <ul class="store_info">
+                 <li><i class="fa fa-home"></i>Av. Circunvalación Nro.1942 Dpto. Piso 3 Int.A San Luis - Lima</li> 
+                  <li><i class="fa fa-phone"></i>Teléfono: <span>(+51) 981 156 077</span></li>
+                  <li><i class="fa fa-envelope"></i>Email: <span><a href="mailto:contacto@lapachamamasac.com">contacto@lapachamamasac.com</a></span></li>
+                  <br>
+                  <li><img  src="assets/images/contacto.jpg" style="height:200px;width:auto;" /></li>
+                </ul>
+               
+              </div>
+              <div class="col-sm-6">
+                <h3 class="page-subheading">Formulario</h3>
+                <form [formGroup]="contactoForm" (ngSubmit)="formContacto()">
+                <div class="contact-form-box">
+                  <div class="form-selector">
+                    <label>Nombres y Apellidos</label>
+                    <input type="text" class="form-control input-sm" [(ngModel)]="nombres"  name="nombres" formControlName="nombresVal" [ngClass]="{ 'is-invalid': submitted && f.nombresVal.errors }" />
+                    <div *ngIf="submitted && f.nombresVal.errors" class="invalid-feedback">
+                      <div *ngIf="f.nombresVal.errors.required" style="color:#dc3545;">Ingrese sus nombres</div>
+                  </div>
+                  </div>
+                  <div class="form-selector">
+                    <label>Correo</label>
+                    <input type="text" class="form-control input-sm" [(ngModel)]="correo" name="correo" formControlName="correoVal" [ngClass]="{ 'is-invalid': submitted && f.correoVal.errors }"/>
+                    <div *ngIf="submitted && f.correoVal.errors" class="invalid-feedback">
+                      <div *ngIf="f.correoVal.errors.required" style="color:#dc3545;">El correo es requerido</div>
+                      <div *ngIf="f.correoVal.errors.email" style="color:#dc3545;">Ingrese un email válido</div>
+                  </div>
+                  </div>
+                  <div class="form-selector">
+                    <label>Teléfono/Celular</label>
+                    <input type="text" class="form-control input-sm" [(ngModel)]="celular" name="celular" formControlName="celularVal" [ngClass]="{ 'is-invalid': submitted && f.celularVal.errors }" (keypress)="keyPress($event)" maxlength="15" />
+                    <div *ngIf="submitted && f.celularVal.errors" class="invalid-feedback">
+                      <div *ngIf="f.celularVal.errors.required" style="color:#dc3545;">Ingrese un telefono</div>
+                      <div *ngIf="f.celularVal.errors.minlength" style="color:#dc3545;">El telefono ingresado es inválido</div>
+                  </div>
+                  </div>
+                  <div class="form-selector">
+                    <label>Mensaje</label>
+                    <textarea class="form-control input-sm" rows="10" [(ngModel)]="mensaje" name="mensaje" formControlName="mensajeVal" [ngClass]="{ 'is-invalid': submitted && f.mensajeVal.errors }"></textarea>
+                    <div *ngIf="submitted && f.mensajeVal.errors" class="invalid-feedback">
+                      <div *ngIf="f.mensajeVal.errors.required" style="color:#dc3545;">Ingrese sus nombres</div>
+                  </div>
+                  </div>
+                  <div class="form-selector">
+                    <button class="button" type="submit"><i class="fa fa-send"></i>&nbsp; <span>Enviar</span></button>
+                    &nbsp; </div>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>

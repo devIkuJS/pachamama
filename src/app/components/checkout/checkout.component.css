@@ -1,0 +1,18 @@
+.checkout-btn {
+    float: right;
+    background: #f8484a;
+    color: #fff;
+    border: 2px solid #f8484a;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    }
+    
+    .checkout-btn:hover{
+        border: 2px solid #333333 !important;
+        background: #333333 !important;
+        transition: all 0.3s linear !important;
+    
+    }

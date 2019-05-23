@@ -1,0 +1,157 @@
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Ir a la página principal" routerLink='/inicio'>Inicio</a><span>&raquo;</span></li>
+            <li><strong>Registro</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+  <!-- Main Container -->
+  <section class="main-container col2-right-layout">
+      <div class="main container">
+        <div class="row">
+          <div class="col-main col-sm-9 col-xs-12">
+     
+                <div class="box-border">
+                    <div class="row">
+                        <div class="col-sm-5">
+                           
+                        </div>
+                        <div class="col-sm-7">
+                            
+                                <h4>Registro</h4>
+                               <p class="before-login-text">Para registrarse ingrese los siguiente campos:</p>
+                               <form [formGroup]="registerForm" (ngSubmit)="registroUsuario()">
+                               <div class="col-sm-12">
+                                  <label>Nombres</label>
+                                  <div class="input-text">
+                                    <input type="text" class="form-control" [(ngModel)]="nombres"  name="nombres" formControlName="nombresVal" [ngClass]="{ 'is-invalid': submitted && f.nombresVal.errors }">
+                                  </div>
+                                  <div *ngIf="submitted && f.nombresVal.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nombresVal.errors.required" style="color:#dc3545;">Ingrese sus nombres</div>
+                                </div>
+                                </div>
+                                <div class="col-sm-6">
+                                  <label>Apellido Paterno</label>
+                                  <div class="input-text">
+                                    <input type="text" class="form-control" [(ngModel)]="apellido_paterno" name="apellido_paterno" formControlName="apellido_paternoVal" [ngClass]="{ 'is-invalid': submitted && f.apellido_paternoVal.errors }" >
+                                  </div>
+                                  <div *ngIf="submitted && f.apellido_paternoVal.errors" class="invalid-feedback">
+                                    <div *ngIf="f.apellido_paternoVal.errors.required" style="color:#dc3545;">Ingrese su apellido paterno</div>
+                                </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Apellido Materno</label>
+                                    <div class="input-text">
+                                      <input type="text" class="form-control" [(ngModel)]="apellido_materno" name="apellido_materno" formControlName="apellido_maternoVal" [ngClass]="{ 'is-invalid': submitted && f.apellido_maternoVal.errors }" >
+                                    </div>
+                                    <div *ngIf="submitted && f.apellido_maternoVal.errors" class="invalid-feedback">
+                                      <div *ngIf="f.apellido_maternoVal.errors.required" style="color:#dc3545;">Ingrese su apellido materno</div>
+                                  </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <label>DNI</label>
+                                      <div class="input-text">
+                                        <input type="text" class="form-control" [(ngModel)]="dni" name="dni" formControlName="dniVal" [ngClass]="{ 'is-invalid': submitted && f.dniVal.errors }"  >
+                                      </div>
+                                      <div *ngIf="submitted && f.dniVal.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dniVal.errors.required" style="color:#dc3545;">Ingrese su DNI</div>
+                                        <div *ngIf="f.dniVal.errors.minlength" style="color:#dc3545;">El DNI debe tener 8 digitos</div>
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Celular</label>
+                                        <div class="input-text">
+                                          <input type="text" class="form-control" [(ngModel)]="celular" name="celular" formControlName="celularVal" [ngClass]="{ 'is-invalid': submitted && f.celularVal.errors }"  >
+                                        </div>
+                                        <div *ngIf="submitted && f.celularVal.errors" class="invalid-feedback">
+                                          <div *ngIf="f.celularVal.errors.required" style="color:#dc3545;">Ingrese un telefono</div>
+                                          <div *ngIf="f.celularVal.errors.minlength" style="color:#dc3545;">El telefono ingresado es inválido</div>
+                                      </div>
+                                      </div>
+                                      
+                                      <div class="col-sm-4">
+                                            <label>Departamento</label>
+                                            <select class="form-control" (change)="selectProvincia($event)" name="departamento" [(ngModel)]="departamento" formControlName="departamentoVal" [ngClass]="{ 'is-invalid': submitted && f.departamentoVal.errors }">
+                                              <option [ngValue]="Seleccione">Seleccione</option>
+                                                <option [value]="item.iddepartamento" *ngFor="let item of departamentos">{{item.descripcion}}</option>
+                                              </select>
+                                              <div *ngIf="submitted && f.departamentoVal.errors" class="invalid-feedback">
+                                                <div *ngIf="f.departamentoVal.errors.required" style="color:#dc3545;">Seleccione departamento</div>
+                                            </div>
+                                          </div> 
+                                          <div class="col-sm-4">
+                                              <label>Provincia</label>
+                                              <select class="form-control" (change)="selectDistrito($event)" name="provincia" [(ngModel)]="provincia" formControlName="provinciaVal" [ngClass]="{ 'is-invalid': submitted && f.provinciaVal.errors }">
+                                                <option [ngValue]="Seleccione">Seleccione</option>
+                                                <option [value]="item.idprovincia" *ngFor="let item of provincias">{{item.descripcion}}</option>
+                                              </select>
+                                              <div *ngIf="submitted && f.provinciaVal.errors" class="invalid-feedback">
+                                                <div *ngIf="f.provinciaVal.errors.required" style="color:#dc3545;">Seleccione provincia</div>
+                                            </div>
+                                            </div>
+                                        <div class="col-sm-4">
+                                            <label>Distrito</label>
+                                          <select class="form-control" [(ngModel)]="distrito" name="distrito" formControlName="distritoVal" [ngClass]="{ 'is-invalid': submitted && f.distritoVal.errors }" >
+                                            <option [ngValue]="Seleccione">Seleccione</option>
+                                                <option [value]="item.iddistrito" *ngFor="let item of distritos">{{item.descripcion}}</option>
+                                              </select>
+                                              <div *ngIf="submitted && f.distritoVal.errors" class="invalid-feedback">
+                                                <div *ngIf="f.distritoVal.errors.required" style="color:#dc3545;">Seleccione distrito</div>
+                                            </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <label>Direcci&oacute;n</label>
+                                              <div class="input-text">
+                                                <input type="text" [(ngModel)]="direccion" name="direccion"  class="form-control" formControlName="direccionVal" [ngClass]="{ 'is-invalid': submitted && f.direccionVal.errors }">
+                                              </div>
+                                              <div *ngIf="submitted && f.direccionVal.errors" class="invalid-feedback">
+                                                <div *ngIf="f.direccionVal.errors.required" style="color:#dc3545;">Ingrese direccion</div>
+                                            </div>
+                                            </div>
+                                        <div class="col-sm-12">
+                                            <label>Correo</label>
+                                            <div class="input-text">
+                                              <input type="text" [(ngModel)]="correo" name="correo"  class="form-control" formControlName="correoVal" [ngClass]="{ 'is-invalid': submitted && f.correoVal.errors }">
+                                            </div>
+                                            <div *ngIf="submitted && f.correoVal.errors" class="invalid-feedback">
+                                              <div *ngIf="f.correoVal.errors.required" style="color:#dc3545;">El correo es requerido</div>
+                                              <div *ngIf="f.correoVal.errors.email" style="color:#dc3545;">Ingrese un email válido</div>
+                                          </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <label>Contraseña</label>
+                                              <div class="input-text">
+                                                <input type="password" [(ngModel)]="clave" name="clave"  class="form-control" formControlName="claveVal" [ngClass]="{ 'is-invalid': submitted && f.claveVal.errors }"> 
+                                              </div>
+                                              <div *ngIf="submitted && f.claveVal.errors" class="invalid-feedback">
+                                                <div *ngIf="f.claveVal.errors.required" style="color:#dc3545;">La contraseña es requerida</div>
+                                                <div *ngIf="f.claveVal.errors.minlength" style="color:#dc3545;">La contraseña debe tener minimo 6 digitos</div>
+                                            </div>
+                                            </div>
+                                            <div class="col-xs-12" style="margin-top:10px;">
+                                                <div class="submit-text">
+                                                  <button class="button" style="color:#fff;" type="submit"><i class="fa fa-user"></i>&nbsp; <span>Registrar</span></button>
+                                                </div>
+                                              </div>
+                                            </form>
+                           
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- -->
+  
+  
+  <!-- Main Container End --> 
+  <!-- service section -->
+  

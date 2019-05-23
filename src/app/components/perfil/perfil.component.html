@@ -1,0 +1,212 @@
+<div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Ir a inicio" routerLink="/inicio">Inicio</a><span>&raquo;</span></li>
+            <li><strong>Perfil</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+
+  <!-- Main Container -->
+
+<section class="main-container col1-layout">
+    <div class="main container">
+      <div class="row">
+        <section class="col-main col-sm-12">
+          <div class="container">
+              <div class="col-md-3" id="contact" >
+                  <ul class="nav nav-pills nav-stacked" >
+                    <li class="active"><a data-toggle="pill" href="#home">Mis datos</a></li>
+                    <li><a data-toggle="pill" href="#menu2">Mis compras</a></li>
+                    <li><a data-toggle="pill" href="#menu3">Actualiza tu clave</a></li>
+                  </ul>
+                </div>
+              <div class="tab-content" style="margin-top:0px !important;">
+                  <div id="home" class="tab-pane fade in active">
+                      <h3>Bienvenido, {{datospersona.nombres}} {{datospersona.apellido_paterno}} {{datospersona.apellido_materno}}</h3>
+                      <form (submit)="actualizarPerfil()">
+                          <div class="col-sm-12">
+                             <label>Nombres</label>
+                             <div class="input-text">
+                               <input type="text" [(ngModel)]="nombres" name="nombres"  class="form-control" value="{{datospersona.nombres}}">
+                             </div>
+                           </div>
+                           <div class="col-sm-6">
+                             <label>Apellido Paterno</label>
+                             <div class="input-text">
+                               <input type="text" [(ngModel)]="apellido_paterno" name="apellido_paterno"  class="form-control" value="{{datospersona.apellido_paterno}}">
+                             </div>
+                           </div>
+                           <div class="col-sm-6">
+                               <label>Apellido Materno</label>
+                               <div class="input-text">
+                                 <input type="text" [(ngModel)]="apellido_materno" name="apellido_materno"  class="form-control" value="{{datospersona.apellido_materno}}">
+                               </div>
+                             </div>
+                             <div class="col-sm-6">
+                                 <label>DNI</label>
+                                 <div class="input-text">
+                                   <input type="text"  name="dni"  class="form-control" disabled value="{{datospersona.dni}}">
+                                 </div>
+                               </div>
+                               <div class="col-sm-6">
+                                   <label>Celular</label>
+                                   <div class="input-text">
+                                     <input type="text"  [(ngModel)]="celular" name="celular"  class="form-control" value="{{datospersona.celular}}">
+                                   </div>
+                                 </div>
+                                 <div class="col-sm-12">
+                                    <p style="margin-top:10px;"><strong>Lugar Actual Registrado </strong>:{{datospersona.departamento}}, {{datospersona.provincia}} , {{datospersona.distrito}}</p>
+                                  </div>                 
+                                 <div class="col-sm-4">
+                                       <label>Departamento</label>
+                                       <select class="form-control" (change)="selectProvincia($event)" name="departamento"  >
+                                        <option [ngValue]="Seleccione">Seleccione</option>
+                                           <option [value]="item.iddepartamento" *ngFor="let item of departamentos">{{item.descripcion}}</option>
+                                         </select>
+                                     </div> 
+                                     <div class="col-sm-4">
+                                         <label>Provincia</label>
+                                         <select class="form-control" (change)="selectDistrito($event)" name="provincia" >
+                                          <option [ngValue]="Seleccione">Seleccione</option>
+                                           <option [value]="item.idprovincia" *ngFor="let item of provincias">{{item.descripcion}}</option>
+                                         </select>
+                                       </div>
+                                   <div class="col-sm-4">
+                                       <label>Distrito</label>
+                                     <select class="form-control" [(ngModel)]="iddistrito" name="iddistrito" >
+                                      <option [ngValue]="Seleccione">Seleccione</option>
+                                           <option [value]="item.iddistrito" *ngFor="let item of distritos">{{item.descripcion}}</option>
+                                         </select>
+                                     </div> 
+                                     <div class="col-sm-12">
+                                         <label>Direcci&oacute;n</label>
+                                         <div class="input-text">
+                                           <input type="text" [(ngModel)]="direccion" name="direccion"  class="form-control" value="{{datospersona.direccion}}">
+                                         </div>
+                                       </div>
+                                   <div class="col-sm-12">
+                                       <label>Correo</label>
+                                       <div class="input-text">
+                                         <input type="text"  name="correo"  class="form-control" value="{{datospersona.correo}}" disabled>
+                                       </div>
+                                     </div>
+                                         <div class="cart_navigation"> 
+                                                <button class="button" style="color:#fff;" type="submit"><i class="fa fa-pencil-square-o"></i>&nbsp; <span>Actualizar</span></button>
+                                              </div>
+                                              </form>
+                                          <button class="button"  style="float:right;color:#fff;" (click)="goCheck()"><i class="fa fa-check" ></i>&nbsp;Continuar con el  Checkout</button>
+                                       
+                                       
+                    </div>
+                      <div id="menu2" class="tab-pane fade">
+                          <h3>Mis compras</h3>
+                          <div class="table-responsive">          
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>ID Compra</th>
+                                    <th>Codigo Compra</th>
+                                    <th>Fecha de Compra</th>
+                                    <th>Detalle</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of listacompra">
+                                      <td>{{item.idcompra}}</td>
+                                    <td>{{item.codigo_transaccion}}</td>
+                                    <td>{{item.fecha_compra}}</td>
+                                    <td><button class="button" style="padding: 4px 3px !important;color:#fff;" (click)="verDetalleCompra(item.idcompra)" data-toggle="modal" data-target="#modalDetalle"><span>Ver detalle</span></button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Actualizar clave</h3>
+                            <div class="contact-form-box">
+                                <form [formGroup]="registerForm" (ngSubmit)="cambiarPassword()" >
+                                    <div>
+                                  <label>Contraseña actual</label>
+                                  <input type="password" class="form-control input"  [(ngModel)]="actualpass"  name="actualpass" formControlName="actualpassword" [ngClass]="{ 'is-invalid': submitted && f.actualpassword.errors }">
+                                  <div *ngIf="submitted && f.actualpassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.actualpassword.errors.required" style="color:#dc3545;">La contraseña actual es requerida</div>
+                                </div>
+                                 </div>
+                                 <div>
+                                   <label>Nueva contraseña</label>
+                                   <input  type="password" class="form-control" [(ngModel)]="newpass"  name="newpass" formControlName="nuevapassword" [ngClass]="{ 'is-invalid': submitted && f.nuevapassword.errors }" >
+                                   <div *ngIf="submitted && f.nuevapassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nuevapassword.errors.required" style="color:#dc3545;">La nueva contraseña es requerida</div>
+                                </div>
+                                 </div>
+                                 <div style="margin-bottom:15px;">
+                                    <label>Confirmar nueva contraseña</label>
+                                    <input  type="password" class="form-control" [(ngModel)]="confirmpass"  name="confirmpass" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
+                                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                      <div *ngIf="f.confirmPassword.errors.required" style="color:#dc3545;">La confirmacion de la contraseña es requerida</div>
+                                      <div *ngIf="f.confirmPassword.errors.mustMatch" style="color:#dc3545;">La nueva y la confirmación deben ser iguales</div>
+                                  </div>
+                                  </div>
+                                   <div style="float:left;">
+                                   <button class="button" style="color:#fff;" type="submit"><i class="fa fa-pencil-square-o"></i>&nbsp; <span>Cambiar</span></button>
+                                   </div>
+                                   
+                                 </form>
+                          </div>
+                          </div>
+                </div>
+                </div>
+        </section>
+      </div>
+    </div>
+  </section>  
+
+  <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Detalle de la Compra</h4>
+          </div>
+          <div class="modal-body">
+              <table class="table table-bordered cart_summary">
+                  <thead>
+                    <tr>
+                      <th class="cart_product">Imagen</th>
+                      <th>Descripcion</th>
+                      <th>Cantidad.</th>
+                      <th>Precio Unidad</th>
+                      <th>SubTotal</th>
+                    </tr>
+                    
+                  </thead>
+                  <tbody>
+
+                      <tr *ngFor="let item of detallecompra"> 
+                     <td class="cart_product"><a><img src="{{item.ruta}}" alt="Product"></a></td>
+                    <td class="cart_description">{{item.nombre}}</td>
+                      <td>{{item.cantidad}}</td>
+                      <td class="price">{{item.precio}}</td>
+                      <td class="price">{{item.precio * item.cantidad}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <td colspan="4"><strong>Total Neto</strong></td>
+                          <td colspan="4" style="padding-left:22px;"><strong>{{totalDetalle(null)}}</strong></td>
+                        </tr>
+                  </tfoot>
+                </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,65 @@
+
+
+@media screen and (max-width: 600px) {
+    #letrita1 {
+      font-size: 20px  !important;
+      padding-bottom:50px !important;
+    }
+    #letrita2 {
+        font-size: 20px !important;
+        padding-bottom:20px !important;
+      }
+
+      #letrita3 {
+        font-size: 8px !important ;
+        line-height: 15px !important;
+      }
+
+      #letrita4 {
+        font-size: 20px  !important;
+        padding-bottom:20px !important;
+      }
+      #letrita5 {
+          font-size: 20px !important;
+        }
+  
+        #letrita6 {
+          font-size: 8px !important ;
+        }
+
+        
+      #letrita7 {
+        font-size: 20px  !important;
+        padding-bottom:50px !important;
+      }
+      #letrita8 {
+          font-size: 20px !important;
+          padding-bottom:20px !important;
+        }
+  
+        #letrita9 {
+            font-size: 8px !important ;
+            line-height: 15px !important;
+        }
+
+        #botoncito1 , #botoncito2 , #botoncito3{
+            display:none;
+        }
+
+        #imgcircular{
+            display:none;
+        }
+        #titulodescuento{
+            font-size:40px !important;
+            text-align: center !important;
+        }
+        #imagenamarilla{
+            width:100% !important;
+        }
+        #mejoresproductos{
+            font-size:15px !important;
+        }
+        #divamarillo{
+            margin-top: 1px !important;
+        }
+  }

@@ -1,0 +1,49 @@
+<ngx-loading-bar [color]="'green'" [includeSpinner]="false"></ngx-loading-bar>
+<div class="header-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-4 hidden-xs"> 
+        <!-- Default Welcome Message -->
+        <div class="welcome-msg ">Bienvenido a {{titulostore}} </div>
+      </div>
+      <!-- top links -->
+      <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
+        <div class="links">
+          <div class="wishlist"><a routerLink='/carrito-de-compras' title="Carrito de compras"><i class="fa fa-shopping-cart">&nbsp;({{(shoppingCartItems$ | async).length}})</i><span class="hidden-xs">Carrito de compras</span></a></div>
+          <div class="login" ><a *ngIf="!loginservice.isLoggedin" routerLink='/iniciar-sesion' title="Iniciar sesión" ><i class="fa fa-unlock-alt"></i><span class="hidden-xs">Iniciar Sesi&oacute;n</span></a></div>
+          <div class="login" style="cursor:pointer !important;"><a *ngIf="loginservice.isLoggedin"  title="Mi Perfil" routerLink='/perfil' ><i class="fa fa-unlock-alt"></i><span class="hidden-xs">Mi Perfil</span></a></div>
+          <div class="login" style="cursor:pointer !important;"><a *ngIf="loginservice.isLoggedin"  (click)="goLogout()" title="Cerrar sesión" ><i class="fa fa-unlock-alt"></i><span class="hidden-xs">Cerrar Sesi&oacute;n</span></a></div>
+        </div>
+        <div class="language-currency-wrapper">
+          <div class="inner-cl">
+            <div class="block block-language form-language"></div>
+            <div class="block block-currency">
+
+
+                <div class="sorter">
+                <div class="short-by">
+                   <select  [(ngModel)]="changeMoneda"  (change)="onChangeMonedaHeader($event)" style="width:132px !important;padding-bottom:12px !important">
+                       
+                        <option value="USD">Dolares</option>
+                        <option value="PEN">Soles</option>
+                        <option value="COP">Peso Colomb.</option>
+                        <option value="WC" *ngIf="loginservice.isLoggedin" >Weed Coin</option> 
+                      </select> 
+                   <!--   <select  [(ngModel)]="changeMoneda"  (change)="onChangeMonedaHeader($event)" style="width:132px !important;padding-bottom:12px !important">
+                        <option [value]="item.Simbolo" *ngFor="let item of listamonedas">{{item.nombre}}</option>
+                       </select>  -->
+                      </div>
+               </div>
+             
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

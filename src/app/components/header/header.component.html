@@ -1,0 +1,116 @@
+<div id="mobile-menu" style="z-index:1000 !important;">
+    <div id="mobile-search">
+      <form>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="search">
+          <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+    <ul>
+      <li><a routerLink='/inicio' class="home1">Inicio</a></li>
+      <li><a routerLink='/nosotros'>Nosotros</a></li>
+      <li><a routerLink='/servicios'>Servicios</a></li>
+      <li><a routerLink='/lista-de-productos'>Productos</a></li>
+      <li><a routerLink='/medicina-natural'>Medicina Natural</a></li>
+      <li><a routerLink='/contacto'>Contacto</a></li>
+   
+    </ul>
+  </div>
+  <!-- end mobile menu -->
+ 
+    
+    <!-- Header -->
+
+    <header style="position:relative;">
+      
+      <div class="container">
+        <div class="row">
+         <div class="col-sm-4 col-md-3 col-xs-8"> 
+            <div class="logo"><a title="e-commerce" routerLink='/inicio'><img alt="e-commerce" src="assets/images/logo.jpg" width="155" height="59"></a> </div>
+          </div>
+         <!-- <div class="col-md-9 col-sm-8 col-xs-3"> -->
+            <div class="col-md-9 col-sm-8 col-xs-4" > 
+            <div class="mtmegamenu">
+            <!--  <ul class="hidden-xs" style="margin-left:50px;"> -->
+                <ul class="hidden-xs">
+                <li class="mt-root demo_custom_link_cms">
+                  <div class="mt-root-item"><a routerLink='/inicio'>
+                    <div class="title title_font"><span class="title-text">Inicio</span></div>
+                    </a></div>
+                </li>
+                <li class="mt-root">
+                  <div class="mt-root-item"><a routerLink='/nosotros'>
+                    <div class="title title_font"><span class="title-text">Nosotros</span></div>
+                    </a>
+                  </div>
+                </li>
+                <li class="mt-root">
+                    <div class="mt-root-item"><a routerLink='/servicios'>
+                      <div class="title title_font"><span class="title-text">Servicios</span></div>
+                      </a>
+                    </div>
+                  </li>
+                <li class="mt-root demo_custom_link_cms">
+                    <div class="mt-root-item"><a routerLink='/lista-de-productos'>
+                      <div class="title title_font"><span class="title-text">Productos</span></div>
+                      </a></div>
+                    <ul class="menu-items col-md-3 col-sm-4 col-xs-12">
+                      <li class="menu-item depth-1">
+                        <div class="title"> <a routerLink='/medicina-natural'>Medicina Natural</a></div>
+                      </li>
+                    </ul>
+                  </li>
+                <li class="mt-root">
+                    <div class="mt-root-item"><a routerLink='/contacto'>
+                      <div class="title title_font"><span class="title-text">Contacto</span></div>
+                      </a></div>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <nav>
+      <div class="container">
+        <div class="row">
+              <div class="col-md-3 col-sm-4 col-xs-3">
+                <div class="mm-toggle-wrap">
+                  <div class="mm-toggle"> <i class="fa fa-align-justify"></i> </div>
+                  <span class="mm-label hidden-xs">Categorias</span> </div>
+                <div class="mega-container visible-lg visible-md visible-sm">
+                  <div class="navleft-container">
+                    <div class="mega-menu-titulo">
+                      <h3>Men&uacute; de categorias</h3>
+                    </div>
+                    <div class="mega-menu-category">
+                      <ul class="nav" *ngFor="let item of categorias">
+                        <li class="nosub"><a [routerLink]="['/categoria',item.idcategoria]"><i class="icon fa fa-check"></i>{{item.nombre}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="col-xs-9 col-sm-6 col-md-6 hidden-xs"> 
+            <div class="top-search">
+              <div id="search">
+                <form (submit)="buscarProducto()">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar" name="nombre"  [(ngModel)]="nombre" autocomplete="off" >
+                    <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="call-us hidden-sm hidden-xs"> <i class="fa fa-whatsapp" style="font-size: 28px !important;"></i>
+            <div class="call-us-inner"> <span class="call-num">(+51) 981 156 077</span> <span class="call-num">(+57) 315 4846903</span> </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+
+   
